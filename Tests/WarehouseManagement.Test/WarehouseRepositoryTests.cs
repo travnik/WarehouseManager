@@ -23,16 +23,29 @@ namespace WarehouseManagement.Test
         [Fact]
         public void Get()
         {
-            _dbContext.Add(new Warehouse()
+            var warehouse = new Warehouse()
             {
-                Name = "test"
-            });
+                Name = GenarateName()
+            };
+            _dbContext.Add(warehouse);
 
             _dbContext.SaveChanges();
             var warehouses = _repository.Get().ToList();
 
-            Assert.NotNull(warehouses);
-            Assert.True(warehouses.Any());
+            Assert.Contains(warehouses, o => o.Id == warehouse.Id);
+        }
+
+        [Fact]
+        public void Get_WhenNotFound()
+        {
+            var warehouses = _repository.Get().ToList();
+
+            Assert.DoesNotContain(warehouses, o => o.Id == Guid.NewGuid());
+        }
+
+        private string GenarateName()
+        {
+            return Guid.NewGuid().ToString();
         }
 
         [Fact]
@@ -40,17 +53,17 @@ namespace WarehouseManagement.Test
         {
             var warehouse = new Warehouse()
             {
-                Name = "test",
+                Name = GenarateName(),
                 WarehouseProducts = new List<WarehouseProduct>()
                 {
                     new WarehouseProduct()
-
                     {
                         Product = new Product()
                     }
                 }
             };
             var fact = _repository.Create(warehouse);
+            _repository.SaveChange();
 
             Assert.Contains(_dbContext.Warehouses, o => o.Name == warehouse.Name);
         }
@@ -58,11 +71,11 @@ namespace WarehouseManagement.Test
         [Fact]
         public void Update()
         {
-            var newName = "new_name";
+            var newName = GenarateName();
 
             var warehouse = new Warehouse()
             {
-                Name = "old_name"
+                Name = GenarateName()
             };
             _dbContext.Add(warehouse);
             _dbContext.SaveChanges();
@@ -70,12 +83,9 @@ namespace WarehouseManagement.Test
             warehouse = _dbContext.Warehouses.First(o => o.Id == warehouse.Id);
             warehouse.Name = newName;
 
+            var fact = _repository.Update(warehouse);
+            _repository.SaveChange();
 
-
-            //var warehouses = _repository.Get().ToList();
-
-            //Assert.NotNull(warehouses);
-            //Assert.True(warehouses.Any());
             Assert.Contains(_dbContext.Warehouses, o => o.Id == warehouse.Id && o.Name == newName);
         }
 
