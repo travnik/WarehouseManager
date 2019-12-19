@@ -12,5 +12,7 @@ namespace WarehouseManagement.Domain
         public Guid Id { get; set; }
 
         public string Name { get; set; }
+
+        public virtual ICollection<WarehouseProduct> WarehouseProducts { get; set; }
     }
 }

@@ -41,5 +41,15 @@ namespace WarehouseManagement.Test
         {
             return new WarehouseRepository(dbContext);
         }
+
+        public static IProductRepository GetProductRepository(WarehouseDbContext dbContext)
+        {
+            return new ProductRepository(dbContext);
+        }
+
+        public static IWarehouseProductRepository GetWarehouseProductRepository(WarehouseDbContext dbContext)
+        {
+            return new WarehouseProductRepository(dbContext);
+        }
     }
 }

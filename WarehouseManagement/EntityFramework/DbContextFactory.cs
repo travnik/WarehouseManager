@@ -13,7 +13,7 @@ namespace WarehouseManagement.EntityFramework
             var options = new AppDbContextOptions
             {
                 Provider = DbContextProvider.Postgre,
-                ConnectionString = "Host = localhost; Database = WarehousHello_Test; Username = user; Password = 123",
+                ConnectionString = "Host = localhost; Database = WarehousHello_Test; Username = postgres; Password = postgres",
                 MigrationsAssemblyProject = "WarehouseManagement",
                 MigrationsHistoryTable = "WarehouseManagement"
             };
