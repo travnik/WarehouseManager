@@ -14,7 +14,6 @@ namespace WarehouseManagement.Repositories
         WarehouseProduct Get(Guid warehouseId, Guid productId);
         WarehouseProduct Create(WarehouseProduct warehouse);
         WarehouseProduct Update(WarehouseProduct warehouse);
-        void Delete(Guid id);
         int SaveChange();
     }
 
