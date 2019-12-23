@@ -55,8 +55,8 @@ namespace WarehouseManagement.Test
         {
             var warehouseProduct = new WarehouseProduct()
             {
-                ProductId = Guid.NewGuid(),
-                WarehouseId = Guid.NewGuid()
+                Product = new Product(),
+                Warehouse = new Warehouse()
             };
 
             var fact = _repository.Create(warehouseProduct);

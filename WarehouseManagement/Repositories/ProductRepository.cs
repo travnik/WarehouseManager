@@ -39,8 +39,8 @@ namespace WarehouseManagement.Repositories
         public IQueryable<Product>Get()
         {
             return _warehouseDbContext.Products
-                .Include(o => o.WarehouseProducts);
-                // QUESTION - Почему не видит склады? .ThenInclude(o => o.Warehouses);
+                .Include(o => o.WarehouseProducts)
+                .ThenInclude(o => o.Warehouse);
         }
 
         public Product Update(Product product)

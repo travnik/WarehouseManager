@@ -23,9 +23,9 @@ namespace WarehouseManagement.EntityFramework
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<WarehouseProduct>().HasKey(u => new {u.ProductId, u.WarehouseId});
-            modelBuilder.Entity<Warehouse>().HasKey(u => new { u.Id });
-            modelBuilder.Entity<Product>().HasKey(u => new { u.Id });
+            modelBuilder.Entity<WarehouseProduct>().HasAlternateKey(u => new {u.ProductId, u.WarehouseId});
+            //modelBuilder.Entity<Warehouse>().HasKey(u => new { u.Id });
+            //modelBuilder.Entity<Product>().HasKey(u => new { u.Id });
         }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
