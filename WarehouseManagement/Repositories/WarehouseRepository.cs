@@ -22,7 +22,7 @@ namespace WarehouseManagement.Repositories
 
         public WarehouseRepository(WarehouseDbContext warehouseDbContext)
         {
-            _warehouseDbContext = warehouseDbContext;
+            _warehouseDbContext = warehouseDbContext ?? throw new ArgumentNullException(nameof(warehouseDbContext));
         }
 
         public Warehouse Create(Warehouse warehouse)
