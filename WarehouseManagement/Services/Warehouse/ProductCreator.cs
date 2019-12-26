@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using WarehouseManagement.Domain;
 using WarehouseManagement.Models;
 using WarehouseManagement.Repositories;
+using WarehouseManagement.Shared.Domain;
 
 namespace WarehouseManagement.Services.Warehouse
 {
@@ -14,9 +14,9 @@ namespace WarehouseManagement.Services.Warehouse
 
     public class ProductCreator : IProductCreator
     {
-        private readonly ProductRepository _productRepository;
+        private readonly IProductRepository _productRepository;
 
-        public ProductCreator(ProductRepository productRepository)
+        public ProductCreator(IProductRepository productRepository)
         {
             _productRepository = productRepository ?? throw new ArgumentNullException(nameof(productRepository));
         }

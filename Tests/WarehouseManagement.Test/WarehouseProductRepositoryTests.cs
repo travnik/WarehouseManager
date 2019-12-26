@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using WarehouseManagement.Domain;
 using WarehouseManagement.EntityFramework;
 using WarehouseManagement.Repositories;
+using WarehouseManagement.Shared.Domain;
 using Xunit;
 
 namespace WarehouseManagement.Test

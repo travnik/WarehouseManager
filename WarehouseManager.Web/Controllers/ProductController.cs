@@ -1,12 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using WarehouseManagement.Domain;
 using WarehouseManagement.Models;
 using WarehouseManagement.Repositories;
 using WarehouseManagement.Services.Warehouse;
+using WarehouseManagement.Shared.Domain;
 
 namespace WarehouseManager.Web.Controllers
 {
@@ -25,7 +24,7 @@ namespace WarehouseManager.Web.Controllers
 
         public IEnumerable<Product> Get()
         {
-            return _productRepository.Get()?.ToList();
+            return _productRepository.Get().ToList();
         }
 
         [HttpPost]

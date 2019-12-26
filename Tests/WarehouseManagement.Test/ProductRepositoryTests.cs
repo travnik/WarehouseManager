@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using WarehouseManagement.Domain;
+using WarehouseManagement.Shared.Domain;
 using WarehouseManagement.EntityFramework;
 using WarehouseManagement.Repositories;
 using Xunit;

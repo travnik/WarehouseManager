@@ -42,7 +42,11 @@ namespace WarehouseManager.Web
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
+                app.UseBlazorDebugging();
             }
+            app.UseStaticFiles();
+            app.UseClientSideBlazorFiles<WarehouseManagerClient.Startup>();
+
 
             app.UseHttpsRedirection();
 
@@ -53,6 +57,7 @@ namespace WarehouseManager.Web
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
+                endpoints.MapFallbackToClientSideBlazor<WarehouseManagerClient.Startup>("index.html");
             });
         }
     }

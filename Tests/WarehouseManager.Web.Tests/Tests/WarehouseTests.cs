@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using System.Net.Http;
 using System.Text;
-using WarehouseManagement.Domain;
 using WarehouseManagement.Models;
+using WarehouseManagement.Shared.Domain;
 using WarehouseManager.Web.Tests.Helpers;
 using WarehouseManager.Web.Tests.TestHelper;
 using Xunit;

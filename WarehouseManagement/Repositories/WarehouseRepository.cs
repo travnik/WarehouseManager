@@ -4,7 +4,7 @@ using System.Text;
 using WarehouseManagement.EntityFramework;
 using System.Linq;
 using Microsoft.EntityFrameworkCore;
-using WarehouseManagement.Domain;
+using WarehouseManagement.Shared.Domain;
 
 namespace WarehouseManagement.Repositories
 {

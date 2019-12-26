@@ -8,7 +8,7 @@ namespace WarehouseManagement.Services.Warehouse
 {
     public interface IWarehouseCreator
     {
-        Domain.Warehouse Create(CreateWarehouseModel model);
+        Shared.Domain.Warehouse Create(CreateWarehouseModel model);
     }
 
     public class WarehouseCreator : IWarehouseCreator
@@ -20,9 +20,9 @@ namespace WarehouseManagement.Services.Warehouse
             _warehouseRepository = warehouseRepository ?? throw new ArgumentNullException(nameof(warehouseRepository)); ;
         }
 
-        public Domain.Warehouse Create(CreateWarehouseModel model)
+        public Shared.Domain.Warehouse Create(CreateWarehouseModel model)
         {
-            var warehouse = new Domain.Warehouse
+            var warehouse = new Shared.Domain.Warehouse
             {
                 Name = model.Name
             };

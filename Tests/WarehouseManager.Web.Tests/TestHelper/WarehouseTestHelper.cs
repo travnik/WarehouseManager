@@ -4,8 +4,8 @@ using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
-using WarehouseManagement.Domain;
 using WarehouseManagement.Models;
+using WarehouseManagement.Shared.Domain;
 
 namespace WarehouseManager.Web.Tests.TestHelper
 {

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using WarehouseManagement.Domain;
+using WarehouseManagement.Shared.Domain;
 using WarehouseManagement.Models;
 using WarehouseManagement.Repositories;
 using WarehouseManagement.Services.Warehouse;
