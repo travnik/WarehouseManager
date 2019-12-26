@@ -27,7 +27,7 @@ namespace WarehouseManager.Web.Controllers
         [HttpGet]
         public IEnumerable<Warehouse> Get()
         {
-            return _warehouseRepository.Get().ToList();
+            return _warehouseRepository.Get()?.ToList();
         }
 
         [HttpPost]

@@ -11,8 +11,8 @@ namespace WarehouseManagement.Repositories
     public interface IProductRepository
     {
         IQueryable<Product> Get();
-        Product Create(Product warehouse);
-        Product Update(Product warehouse);
+        Product Create(Product product);
+        Product Update(Product product);
         int SaveChange();
     }
 
@@ -22,7 +22,7 @@ namespace WarehouseManagement.Repositories
 
         public ProductRepository(WarehouseDbContext warehouseDbContext)
         {
-            _warehouseDbContext = warehouseDbContext;
+            _warehouseDbContext = warehouseDbContext ?? throw new ArgumentNullException(nameof(warehouseDbContext));
         }
 
         public Product Create(Product product)

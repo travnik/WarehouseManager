@@ -36,7 +36,7 @@ namespace WarehouseManagement.Repositories
             return _warehouseDbContext.SaveChanges();
         }
 
-        public IQueryable<Warehouse> Get()
+        public IQueryable<Warehouse>Get()
         {
             return _warehouseDbContext.Warehouses
                 .Include(o => o.WarehouseProducts)

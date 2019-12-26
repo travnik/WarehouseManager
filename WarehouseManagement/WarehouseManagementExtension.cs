@@ -14,8 +14,13 @@ namespace WarehouseManagement
         public static void ConfigureWarehouseManagement(this IServiceCollection services, IConfiguration configuration)
         {
             services.AddDbContext<WarehouseDbContext>();
+
             services.AddScoped<IWarehouseRepository, WarehouseRepository>();
+            services.AddScoped<IProductRepository, ProductRepository>();
+
             services.AddScoped<IWarehouseCreator, WarehouseCreator>();
+            services.AddScoped<IProductCreator, ProductCreator>();
+
             services.Configure<AppDbContextOptions>(o => configuration.GetSection("DbContextOptions").Bind(o));
         }
 

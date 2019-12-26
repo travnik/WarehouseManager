@@ -16,7 +16,7 @@ namespace WarehouseManagement.EntityFramework
         public DbSet<WarehouseProduct> WarehouseProducts { get; set; }
 
 
-        public WarehouseDbContext(IOptions<AppDbContextOptions> contextOptions) :base()
+        public WarehouseDbContext(IOptions<AppDbContextOptions> contextOptions) : base()
         {
             _contextOptions = contextOptions.Value;
         }
@@ -24,8 +24,6 @@ namespace WarehouseManagement.EntityFramework
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<WarehouseProduct>().HasAlternateKey(u => new {u.ProductId, u.WarehouseId});
-            //modelBuilder.Entity<Warehouse>().HasKey(u => new { u.Id });
-            //modelBuilder.Entity<Product>().HasKey(u => new { u.Id });
         }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)

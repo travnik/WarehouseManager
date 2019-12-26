@@ -22,12 +22,14 @@ namespace WarehouseManagement.Services.Warehouse
 
         public Domain.Warehouse Create(CreateWarehouseModel model)
         {
-            var warehouse = new Domain.Warehouse()
+            var warehouse = new Domain.Warehouse
             {
                 Name = model.Name
             };
+
             _warehouseRepository.Create(warehouse);
             _warehouseRepository.SaveChange();
+
             return warehouse;
         }
     }
