@@ -4,6 +4,9 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using WarehouseManagement.Models;
+using WarehouseManagement.Repositories;
+using WarehouseManagement.Services.Warehouse;
 using WarehouseManagement.Shared.Domain;
 
 namespace WarehouseManager.Web.Controllers
@@ -12,34 +15,25 @@ namespace WarehouseManager.Web.Controllers
     [ApiController]
     public class WarehouseProductController : ControllerBase
     {
-        private static readonly List<WarehouseProduct> _warehouseProducts = new List<WarehouseProduct>()
+        private IWarehouseProductRepository _warehouseProductRepository;
+        private IWarehouseProductCreator _warehouseProductCreator;
+
+        public WarehouseProductController(IWarehouseProductRepository warehouseProductRepository, IWarehouseProductCreator warehouseProductCreator)
         {
-            Create("первый"),
-            Create("второй"),
-            Create("третий")
-        };
+            _warehouseProductRepository = warehouseProductRepository;
+            _warehouseProductCreator = warehouseProductCreator;
+        }
 
         [HttpGet]
         public IEnumerable<WarehouseProduct> Get()
         {
-            return _warehouseProducts.ToList();
+            return _warehouseProductRepository.Get().ToList();
         }
 
-        private static WarehouseProduct Create(string name)
+        [HttpPost]
+        public WarehouseProduct Create([FromBody] CreateWarehouseProductModel createModel)
         {
-            return new WarehouseProduct()
-            {
-                Warehouse = new Warehouse()
-                {
-                    Name = $"склад {name}"
-                },
-                Product = new Product()
-                {
-                    Name = $"продукт {name}"
-                },
-                Count = 4,
-                Id = Guid.NewGuid()
-            };
+            return _warehouseProductCreator.Create(createModel);
         }
     }
 }

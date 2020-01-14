@@ -22,6 +22,7 @@ namespace WarehouseManager.Web.Controllers
             _productCreator = productCreator;
         }
 
+        [HttpGet]
         public IEnumerable<Product> Get()
         {
             return _productRepository.Get().ToList();

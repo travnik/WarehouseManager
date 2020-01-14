@@ -10,12 +10,12 @@ using Xunit;
 
 namespace WarehouseManager.Web.Tests.Tests
 {
-    public class WarehouseTests : IDisposable
+    public class ProductTests : IDisposable
     {
         private readonly WarehouseManagerWebApplicationFactory<Startup> _warehouseManagerWebApplicationFactory = new WarehouseManagerWebApplicationFactory<Startup>();
         private readonly HttpClient _httpClient;
 
-        public WarehouseTests()
+        public ProductTests()
         {
             _httpClient = _warehouseManagerWebApplicationFactory.CreateClient();
         }
@@ -24,13 +24,13 @@ namespace WarehouseManager.Web.Tests.Tests
         public async void Get()
         {
             var dbContext = _warehouseManagerWebApplicationFactory.GetDbContext();
-            dbContext.Add(new Warehouse());
+            dbContext.Add(new Product());
             dbContext.SaveChanges();
 
-            var warehouses = await WarehouseTestHelper.Get(_httpClient);
+            var products = await ProductTestHelper.Get(_httpClient);
 
-            Assert.NotNull(warehouses);
-            Assert.NotEmpty(warehouses);
+            Assert.NotNull(products);
+            Assert.NotEmpty(products);
         }
 
         [Fact]
@@ -38,15 +38,15 @@ namespace WarehouseManager.Web.Tests.Tests
         {
             var dbContext = _warehouseManagerWebApplicationFactory.GetDbContext();
 
-            var model = new CreateWarehouseModel()
+            var model = new CreateProductModel()
             {
                 Name = Guid.NewGuid().ToString()
             };
 
-            var warehouse = await WarehouseTestHelper.Create(_httpClient, model);
+            var product = await ProductTestHelper.Create(_httpClient, model);
 
-            Assert.Equal(warehouse.Name, model.Name);
-            Assert.Contains(dbContext.Warehouses, o => o.Id == warehouse.Id && o.Name == warehouse.Name);
+            Assert.Equal(product.Name, model.Name);
+            Assert.Contains(dbContext.Products, o => o.Id == product.Id && o.Name == product.Name);
         }
 
         public void Dispose()

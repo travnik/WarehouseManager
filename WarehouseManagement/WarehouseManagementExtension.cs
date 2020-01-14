@@ -18,9 +18,11 @@ namespace WarehouseManagement
 
             services.AddScoped<IWarehouseRepository, WarehouseRepository>();
             services.AddScoped<IProductRepository, ProductRepository>();
+            services.AddScoped<IWarehouseProductRepository, WarehouseProductRepository>();
 
             services.AddScoped<IWarehouseCreator, WarehouseCreator>();
             services.AddScoped<IProductCreator, ProductCreator>();
+            services.AddScoped<IWarehouseProductCreator, WarehouseProductCreator>();
 
             services.Configure<AppDbContextOptions>(o => configuration.GetSection("DbContextOptions").Bind(o));
         }
@@ -29,6 +31,7 @@ namespace WarehouseManagement
         {
             var options = app.ApplicationServices.GetRequiredService<Microsoft.Extensions.Options.IOptions<AppDbContextOptions>>();
             var isMemory = options.Value.Provider == DbContextProvider.InMemory;
+
             InitializeDatabase(app, isMemory);
         }
 
